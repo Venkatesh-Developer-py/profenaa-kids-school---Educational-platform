@@ -1,0 +1,40 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+
+RewriteEngine On
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+RewriteRule ^ %1 [R,L,NC]
+
+Redirect 301 /curriculum.html https://profenaakidsschool.com
+Redirect 301 /about-principal.html https://profenaakidsschool.com
+Redirect 301 /montessori-course-online https://profenaakidsschool.com
+Redirect 301 /montessori-school https://profenaakidsschool.com
+Redirect 301 /about-us https://profenaakidsschool.com
+Redirect 301 /lander https://profenaakidsschool.com
+Redirect 301 /contact-us https://profenaakidsschool.com
+Redirect 301 /activities https://profenaakidsschool.com
+Redirect 301 /events https://profenaakidsschool.com
+Redirect 301 https://profenaakidsschool.com/about-chairman https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/about-chairman.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/contact.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/contact https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/playGroup.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/playGroup https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/dayCare.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/dayCare https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/about-principal.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/about-principal https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/junior-kg.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/junior-kg https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/senior-kg.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/senior-kg https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/index.html https://profenaakidsschool.com/
+Redirect 301 https://profenaakidsschool.com/index https://profenaakidsschool.com/
+
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+ErrorDocument 404 /404.html
+</IfModule>

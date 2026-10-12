@@ -1,0 +1,16 @@
+.seclist_ul{
+    margin:12px 15px;
+    list-style-position: outside;
+}
+.seclist{
+    text-align: justify;
+    font-size: 20px;
+margin: 15px 0px; }
+.TrainProfile{
+    width:80%;
+    margin:auto;
+}
+
+.msg{
+    resize: none;
+}

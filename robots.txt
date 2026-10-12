@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://profenaainternationalkidsschool.com/sitemap.xml

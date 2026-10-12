@@ -1,0 +1,71 @@
+/* ===== RECENT INITIATIVES (hero card) — compact top-right version =====
+   Either keep this as its own file (linked in index.html)
+   or paste it at the end of style.css and remove the <link>. */
+.rc-card{--s:96px;position:absolute;top:76px;right:calc(7vw + 36px);width:224px;z-index:12;
+  padding:12px 12px 11px;border-radius:16px;color:#FDFCF9;font-family:'DM Sans','Poppins',sans-serif;
+  background:linear-gradient(160deg,rgba(253,252,249,.10),rgba(253,252,249,.03));
+  border:1px solid rgba(201,169,110,.30);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  box-shadow:0 14px 34px rgba(0,0,0,.45),0 0 24px rgba(201,169,110,.10),inset 0 1px 0 rgba(253,252,249,.10);
+  opacity:0;transform:translateY(14px);transition:opacity .7s ease 1.2s,transform .7s ease 1.2s}
+.hero.loaded .rc-card{opacity:1;transform:none}
+
+.rc-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.rc-heading{margin:0;font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#C9A96E}
+.rc-underline{width:36px;height:2px;margin:8px 0 10px;background:linear-gradient(to right,#C9A96E,rgba(201,169,110,0))}
+.rc-tabs{display:flex;gap:6px}
+.rc-tab{background:none;border:0;padding:0;font:500 9px 'DM Sans','Poppins',sans-serif;letter-spacing:.12em;color:rgba(253,252,249,.4);cursor:pointer;transition:color .3s}
+.rc-tab.active,.rc-tab:hover{color:#C9A96E}
+
+/* image stage */
+.rc-stage{position:relative;height:calc(var(--s) + 14px);overflow:hidden}
+.rc-slides{position:absolute;inset:0}
+.rc-slide{position:absolute;top:50%;left:50%;width:var(--s);height:var(--s);border-radius:12px;overflow:hidden;
+  background:linear-gradient(135deg,#2a2418,#14110b);opacity:0;pointer-events:none;z-index:0;
+  transform:translate(-50%,-50%) scale(.6);transition:transform .6s cubic-bezier(.4,0,.2,1),opacity .6s ease,filter .6s ease}
+.rc-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.rc-slide.is-active{opacity:1;z-index:3;transform:translate(-50%,-50%) scale(1);
+  box-shadow:0 0 0 1px rgba(201,169,110,.65),0 8px 20px rgba(0,0,0,.5),0 0 18px rgba(201,169,110,.28)}
+.rc-slide.is-prev,.rc-slide.is-next{opacity:.5;z-index:1;filter:blur(2px) brightness(.6)}
+.rc-slide.is-prev{transform:translate(-50%,-50%) translateX(calc(var(--s) * -.56)) scale(.68)}
+.rc-slide.is-next{transform:translate(-50%,-50%) translateX(calc(var(--s) * .56)) scale(.68)}
+
+/* arrows */
+.rc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:26px;height:26px;padding:0;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1;color:#FDFCF9;cursor:pointer;
+  background:rgba(253,252,249,.10);border:1px solid rgba(201,169,110,.40);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 0 10px rgba(201,169,110,.20);
+  transition:background .3s,box-shadow .3s,transform .3s}
+.rc-arrow:hover{background:rgba(201,169,110,.28);box-shadow:0 0 16px rgba(201,169,110,.55);transform:translateY(-50%) scale(1.08)}
+.rc-prev{left:0}.rc-next{right:0}
+
+/* pagination */
+.rc-dots{display:flex;justify-content:center;gap:5px;margin-top:8px;min-height:5px}
+.rc-dot{width:8px;height:5px;padding:0;border:0;border-radius:3px;background:rgba(253,252,249,.28);cursor:pointer;transition:width .35s,background .35s,box-shadow .35s}
+.rc-dot.active{width:22px;background:#C9A96E;box-shadow:0 0 10px rgba(201,169,110,.8)}
+.rc-card.is-single .rc-arrow,.rc-card.is-single .rc-dots{display:none}
+
+/* text */
+.rc-title{margin:10px 0 4px;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:500;line-height:1.2}
+.rc-desc{margin:0;font-size:10.5px;font-weight:300;line-height:1.5;color:rgba(253,252,249,.65);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rc-divider{height:1px;margin:9px 0;background:linear-gradient(to right,rgba(201,169,110,.5),rgba(201,169,110,0))}
+.rc-meta{display:flex;flex-direction:column;align-items:flex-start;gap:3px;font-size:10px;color:rgba(253,252,249,.72)}
+.rc-sep{display:none} /* date and location stack in the compact card, so no dangling divider */
+.rc-info.is-in{animation:rcFade .35s ease}
+@keyframes rcFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* short desktop screens */
+@media (max-height:760px){.rc-card{--s:84px;top:68px;padding:10px}}
+
+/* tablet + mobile: card moves out of the hero into .rc-slot (no overlap) */
+.rc-slot{display:none}
+@media (max-width:1200px){
+  .rc-card{display:none}
+  .rc-slot{display:block;background:#0A0A08;padding:20px 16px 28px}
+  .rc-slot:empty{display:none}
+  .rc-slot .rc-card{display:block;position:relative;top:auto;right:auto;width:min(100%,300px);margin:0 auto;
+    opacity:1;transform:none;transition:none;--s:clamp(100px,32vw,120px)}
+}
+
+/* phones: keep the card clear of the fixed contact icons on the right edge */
+@media (max-width:768px){.rc-slot{padding-right:64px}}
